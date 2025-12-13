@@ -35,7 +35,7 @@ class CafeForm(FlaskForm):
 # all Flask routes below
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("templates/index.html")
 
 
 @app.route('/add', methods=["GET", "POST"])
@@ -54,7 +54,7 @@ def add_cafe():
                 form.powerrating.data
             ])
         return redirect(url_for('cafes'))
-    return render_template('add.html', form=form)
+    return render_template('templates/add.html', form=form)
 
 
 @app.route('/cafes')
@@ -64,7 +64,7 @@ def cafes():
         list_of_rows = []
         for row in csv_data:
             list_of_rows.append(row)
-    return render_template('cafes.html', cafes=list_of_rows)
+    return render_template('templates/cafes.html', cafes=list_of_rows)
 
 
 if __name__ == '__main__':
